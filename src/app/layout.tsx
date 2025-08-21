@@ -81,16 +81,16 @@ export const metadata: Metadata = {
     default: 'Arif H | Professional Portfolio',
     template: '%s | Arif H'
   },
-  description: 'Professional portfolio showcasing my work, skills, and experience in [your field].',
-  keywords: ['portfolio', 'web developer', 'designer', 'your profession', 'skills'],
-  authors: [{ name: 'Arif H', url: 'https://yourwebsite.com' }],
+  description: 'Professional portfolio showcasing my work, skills, and experience in MERN developer.',
+  keywords: ['portfolio', 'web developer', 'designer', 'mern stack developer', 'skills'],
+  authors: [{ name: 'Arif H', url: 'https://arifprodev.vercel.app' }],
   creator: 'Arif H',
   publisher: 'Arif H',
-  metadataBase: new URL('https://yourwebsite.com'),
+  metadataBase: new URL('https://arifprodev.vercel.app'),
   openGraph: {
     title: 'Arif H | Professional Portfolio',
     description: 'Professional portfolio showcasing my work and skills',
-    url: 'https://yourwebsite.com',
+    url: 'https://arifprodev.vercel.app',
     siteName: 'Arif H Portfolio',
     images: [
       {
@@ -154,8 +154,10 @@ export default function RootLayout({
           <header>  <Header /></header>
           <main className="min-h-screen">
             {children}
-            <Analytics />
           </main>
+          <Analytics
+            debug={process.env.NEXT_NODE_ENV === 'development'}
+          />
         </Providers>
       </body>
     </html>
