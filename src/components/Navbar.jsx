@@ -115,7 +115,7 @@ export default function Navbar() {
   ];
 
   return (
-    <section className="px-6 md:px-8 lg:px-10">
+    <section className="px-4 md:px-6 lg:px-8">
       <div>
         <div className="w-full">
           <div className="flex justify-between py-3 sm:py-4">
