@@ -44,6 +44,7 @@ const AnimatedText = ({ text, delay = 0 }) => {
   );
 };
 
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
