@@ -114,16 +114,14 @@ export default function Navbar() {
   ];
 
   return (
-    <section className="px-4">
+    <section className="px-6 md:px-8 lg:px-10">
       <div>
         <div className="w-full">
           <div className="flex justify-between py-3 sm:py-4">
             {/* Navigation */}
             <div className="flex md:items-center justify-between w-full font-medium text-lg text-[#6B645C] z-10">
               {/* Logo */}
-              <p>
-                Web Developer & Designer
-              </p>
+              <p>Web Developer & Designer</p>
 
               {/* Nav Links */}
               <div className="flex flex-col md:flex-row -space-y-1.5">
@@ -147,7 +145,7 @@ export default function Navbar() {
           </div>
           {/* Hero Background Text - Animated Characters */}
           <div className="w-fit">
-            <div className="flex flex-wrap -space-y-[57px] text-[#302f2d] md:opacity-0 absolute top-[42px]">
+            <div className="flex flex-wrap -space-y-[57px] text-[#302f2d] md:opacity-0 absolute top-[55px]">
               <h1 className="text-[7.6rem] -tracking-widest font-bold">
                 <AnimatedText text="ARIF" delay={100} />
               </h1>
@@ -155,17 +153,18 @@ export default function Navbar() {
                 <AnimatedText text="HOSSEN" delay={300} />
               </h2>
             </div>
-              <div className="hidden w-fit mx-auto md:flex justify-center items-center gap-4 md:gap-5 lg:gap-6 xl:gap-7 -tracking-widest absolute left-0 right-0 font-semibold uppercase overflow-hidden
-         top-10
-        md:text-[126px] md:-top-2 md:font-semibold md:flex-row
+            <div
+              className="hidden w-fit mx-auto md:flex justify-center items-center md:gap-5 lg:gap-6 xl:gap-7 -tracking-widest absolute left-0 right-0 font-semibold uppercase overflow-hidden
+        md:text-[123px] md:-top-2 md:font-semibold md:flex-row
         lg:text-[168.4px] lg:-top-6 lg:font-semibold
         xl:text-[215px] xl:-top-11
         2xl:text-[261.9px] 2xl:-top-16
-        text-[#302f2d]">
-                <AnimatedText text="ARIF" delay={100} />
-                <AnimatedText text="HOSSEN" delay={300} />
-              </div>
+        text-[#302f2d]"
+            >
+              <AnimatedText text="ARIF" delay={100} />
+              <AnimatedText text="HOSSEN" delay={300} />
             </div>
+          </div>
         </div>
 
         {/* Mobile Menu Overlay */}
