@@ -8,8 +8,8 @@ export default function Header() {
   const shortYear = new Date().getFullYear().toString().slice(-2);
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 md:px-8 lg:px-10 py-12">
-      <div className="mt-24 lg:mt-36 flex flex-col md:flex-row items-stretch gap-8 md:gap-5 text-[#302f2d] justify-between w-full overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-4 md:px-6 lg:px-8 py-12">
+      <div className="mt-24 lg:mt-36 flex flex-col md:flex-row items-stretch gap-8 md:gap-5 text-[#302f2d] justify-between w-full">
         {/* Left Content - Aligned to top */}
         <div className="max-w-xs lg:max-w-lg flex flex-col justify-start">
           <div className="pt-4">
@@ -56,7 +56,7 @@ export default function Header() {
                 hoverTextColor="#e6e4dd"
                 textColor="#302f2d"
                 bgColor=""
-                className="px-6 py-3 outline outline-[#302f2d] hover:bg-[#302f2d] hover:outline-none hover:text-[#302f2d] transition-colors duration-300"
+                className="px-6 py-3 border border-[#302f2d] hover:bg-[#302f2d] hover:border-none hover:text-[#e6e4dd] transition-colors duration-300"
               />
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function Header() {
         {/* Center Image - Vertically centered */}
         <div className="w-fit mx-auto flex items-center justify-center">
           <div className="rounded-md overflow-hidden shadow-lg max-w-xs lg:max-w-sm mx-auto">
-            <div className="relative aspect-[3/4] w-full h-96 md:h-72 lg:h-[500px]">
+            <div className="relative aspect-[3/4] w-full h-96">
               <div className="absolute inset-0 bg-gradient-to-br from-[#e6e4dd] to-[#d1cec4] flex items-center justify-center saturate-0 hover:saturate-100 transition-all duration-500">
                 <Image
                   src="/images/arifh.jpg"
