@@ -147,10 +147,10 @@ export default function RootLayout({
       </head>
       <body className={`${neueMontreal?.className} ${neueMontrealMono?.variable} antialiased`}>
         <Providers>
-          <nav className="">
+          <nav>
             <Navbar />
           </nav>
-          <Header />
+          <header>  <Header /></header>
           <main className="min-h-screen">
             {children}
           </main>

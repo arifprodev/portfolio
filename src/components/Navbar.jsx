@@ -59,7 +59,7 @@ export default function Navbar() {
       const scrollPercentage =
         documentHeight > 0 ? (scrollPosition / documentHeight) * 100 : 0;
 
-      setIsScrolled(scrollPercentage >= 10);
+      setIsScrolled(scrollPercentage >= 20);
 
       // Save scroll position if it's 10% or more
       if (scrollPercentage >= 10) {
@@ -119,14 +119,14 @@ export default function Navbar() {
         <div className="w-full">
           <div className="flex justify-between py-3 sm:py-4">
             {/* Navigation */}
-            <div className="flex md:items-center justify-between w-full text-xs sm:text-sm font-medium text-[#6B645C]">
+            <div className="flex md:items-center justify-between w-full font-medium text-lg text-[#6B645C] z-10">
               {/* Logo */}
-              <p className="text-xs md:text-sm lg:text-base">
+              <p>
                 Web Developer & Designer
               </p>
 
               {/* Nav Links */}
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col md:flex-row -space-y-1.5">
                 <NavLink href="#services">Services</NavLink>
                 <NavLink href="#works">Works</NavLink>
                 <NavLink href="#about">About</NavLink>
@@ -138,7 +138,7 @@ export default function Navbar() {
             {isScrolled && (
               <button
                 onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-gray-900 bg-[#F1F0ED] w-10 h-10 sm:w-12 sm:h-12 hover:bg-slate-100 focus:outline-none fixed top-4 sm:top-5 md:top-7 lg:top-10 right-3 sm:right-5 md:right-8 z-[9999] transition-all duration-300 shadow-sm"
+                className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-gray-900 bg-[#F1F0ED] w-10 h-10 sm:w-12 sm:h-12 hover:bg-slate-100 focus:outline-none fixed top-4 sm:top-5 md:top-7 lg:top-10 right-3 sm:right-5 md:right-8 z-[999] transition-all duration-300 shadow-sm"
                 aria-label="Toggle menu"
               >
                 <HamburgerIcon isOpen={isOpen} />
@@ -155,11 +155,11 @@ export default function Navbar() {
                 <AnimatedText text="HOSSEN" delay={300} />
               </h2>
             </div>
-              <div className="hidden w-fit mx-auto md:flex justify-center items-center gap-4 md:gap-5 lg:gap-6 xl:gap-7 -tracking-widest absolute left-0 right-0 -z-10 font-semibold uppercase overflow-hidden
+              <div className="hidden w-fit mx-auto md:flex justify-center items-center gap-4 md:gap-5 lg:gap-6 xl:gap-7 -tracking-widest absolute left-0 right-0 font-semibold uppercase overflow-hidden
          top-10
-        md:text-[126px] md:-top-4 md:font-semibold md:flex-row
-        lg:text-[168.4px] lg:-top-8 lg:font-semibold
-        xl:text-[215px] xl:-top-12
+        md:text-[126px] md:-top-2 md:font-semibold md:flex-row
+        lg:text-[168.4px] lg:-top-6 lg:font-semibold
+        xl:text-[215px] xl:-top-11
         2xl:text-[261.9px] 2xl:-top-16
         text-[#302f2d]">
                 <AnimatedText text="ARIF" delay={100} />
@@ -216,7 +216,7 @@ export default function Navbar() {
                 </motion.div>
 
                 {/* Menu Content */}
-                <div className="flex flex-col pt-8 lg:pt-10 px-4 sm:px-6 md:px-8 items-start sm:items-end sm:mr-8 md:mr-48 lg:mr-52 xl:mr-64">
+                <div className="flex flex-col pt-10 px-4 sm:px-6 md:px-8 items-start sm:items-end sm:mr-8 md:mr-48 lg:mr-52 xl:mr-64">
                   <div className="space-y-4 sm:space-y-6 md:space-y-8 w-full sm:w-auto">
                     {/* Menu Items with Waterfall Effect */}
                     <div className="">
@@ -317,7 +317,7 @@ export default function Navbar() {
 const NavLink = ({ href, children }) => (
   <Link
     href={href}
-    className="px-1 text-[#6B645C] hover:text-[#4a443e] transition-colors text-sm lg:text-base"
+    className="px-1 text-[#6B645C] hover:text-[#4a443e] transition-colors"
   >
     <motion.span
       whileHover={{ scale: 1.05 }}
