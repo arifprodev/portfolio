@@ -4,6 +4,7 @@ import './globals.css';
 import { Providers } from '@/providers';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
+import { Analytics } from '@vercel/analytics/next';
 
 /** Local Fonts */
 const neueMontreal = localFont({
@@ -153,6 +154,7 @@ export default function RootLayout({
           <header>  <Header /></header>
           <main className="min-h-screen">
             {children}
+            <Analytics />
           </main>
         </Providers>
       </body>
