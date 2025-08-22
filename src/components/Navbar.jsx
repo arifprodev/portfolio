@@ -137,7 +137,7 @@ export default function Navbar() {
             {isScrolled && (
               <button
                 onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-gray-900 bg-[#F1F0ED] w-10 h-10 sm:w-12 sm:h-12 hover:bg-slate-100 focus:outline-none fixed top-4 sm:top-5 md:top-7 lg:top-10 right-3 sm:right-5 md:right-8 z-[999] transition-all duration-300 shadow-sm"
+                className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-gray-900 bg-[#F1F0ED] w-10 h-10 sm:w-12 sm:h-12 hover:bg-slate-100 focus:outline-none fixed top-4 md:top-7 lg:top-10 right-3.5 md:right-6 lg:right-7 z-[999] transition-all duration-300 shadow-sm"
                 aria-label="Toggle menu"
               >
                 <HamburgerIcon isOpen={isOpen} />

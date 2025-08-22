@@ -45,7 +45,8 @@ export default function Header() {
                 hoverOpacity={0.4}
                 hoverTextColor="#e6e4dd"
                 textColor="#e6e4dd"
-                className="px-6 py-3"
+                className="px-6 py-3 rounded-full"
+                size="lg"
               />
             </div>
             <div className="flex items-end justify-end w-full">
@@ -56,7 +57,9 @@ export default function Header() {
                 hoverTextColor="#e6e4dd"
                 textColor="#302f2d"
                 bgColor=""
-                className="px-6 py-3 border border-[#302f2d] hover:bg-[#302f2d] hover:border-none hover:text-[#e6e4dd] transition-colors duration-300"
+                variant="outline"
+                className="border rounded-full border-black hover:bg-black hover:text-[#e6e4dd] transition-all duration-300"
+                size="lg"
               />
             </div>
           </div>
