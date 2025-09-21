@@ -5,6 +5,8 @@ import { Providers } from '@/providers';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
 import { Analytics } from '@vercel/analytics/next';
+import LoadingWrapper from '@/components/LoadingWrapper';
+import Footer from '@/components/Footer';
 
 /** Local Fonts */
 const neueMontreal = localFont({
@@ -147,18 +149,21 @@ export default function RootLayout({
         />
       </head>
       <body className={`${neueMontreal?.className} ${neueMontrealMono?.variable} antialiased`}>
-        <Providers>
-          <nav>
-            <Navbar />
-          </nav>
-          <header>  <Header /></header>
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Analytics
-            debug={process.env.NEXT_NODE_ENV === 'development'}
-          />
-        </Providers>
+        <LoadingWrapper>
+          <Providers>
+            <nav>
+              <Navbar />
+            </nav>
+            <header> <Header /></header>
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer/>
+            <Analytics
+              debug={process.env.NEXT_NODE_ENV === 'development'}
+            />
+          </Providers>
+        </LoadingWrapper>
       </body>
     </html>
   );

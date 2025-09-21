@@ -46,7 +46,7 @@ export default function Header() {
                 hoverTextColor="#e6e4dd"
                 textColor="#e6e4dd"
                 className="px-6 py-3 rounded-full"
-                size="lg"
+                size="xl"
               />
             </div>
             <div className="flex items-end justify-end w-full">

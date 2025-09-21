@@ -44,51 +44,69 @@ const AnimatedText = ({ text, delay = 0 }) => {
   );
 };
 
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [currentSection, setCurrentSection] = useState("");
+  const [showHamburger, setShowHamburger] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Handle scroll detection - Show hamburger after 10% scroll and maintain position
+  // Define the sections that should show the hamburger menu
+  const validSections = ["services", "works", "about", "contact"];
+
+  // Handle section detection and hamburger visibility
   useEffect(() => {
-    const checkScrollPosition = () => {
-      const scrollPosition = window.scrollY;
-      const documentHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage =
-        documentHeight > 0 ? (scrollPosition / documentHeight) * 100 : 0;
-
-      setIsScrolled(scrollPercentage >= 20);
-
-      // Save scroll position if it's 10% or more
-      if (scrollPercentage >= 10) {
-        sessionStorage.setItem("maintainScroll", scrollPosition.toString());
-      } else {
-        sessionStorage.removeItem("maintainScroll");
-      }
-    };
-
-    // Restore scroll position if it was 10% or more
-    const savedPosition = sessionStorage.getItem("maintainScroll");
-    if (savedPosition) {
-      window.scrollTo(0, parseInt(savedPosition));
-    }
-
-    // Check immediately and after small delay for content loading
-    checkScrollPosition();
-    const timeout = setTimeout(checkScrollPosition, 100);
-
     const handleScroll = () => {
-      checkScrollPosition();
+      const sections = validSections.map(id => document.getElementById(id)).filter(Boolean);
+      
+      let currentSectionId = "";
+      const scrollPosition = window.scrollY;
+      
+      // Find which section is currently in view
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + scrollPosition;
+        const sectionBottom = rect.bottom + scrollPosition;
+        
+        // Check if we're currently in this section
+        if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionBottom - 200) {
+          currentSectionId = section.id;
+          break;
+        }
+      }
+      
+      setCurrentSection(currentSectionId);
+      setShowHamburger(validSections.includes(currentSectionId));
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Multiple checks to ensure detection works on page load/refresh
+    const checkSection = () => {
+      // Wait for DOM to be ready
+      if (document.readyState === 'loading') {
+        return;
+      }
+      handleScroll();
+    };
+
+    // Check immediately
+    checkSection();
+    
+    // Check after small delays to account for content loading
+    setTimeout(checkSection, 100);
+    setTimeout(checkSection, 300);
+    setTimeout(checkSection, 500);
+    
+    // Set up event listeners
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    window.addEventListener("load", checkSection);
+    document.addEventListener("DOMContentLoaded", checkSection);
 
     return () => {
-      clearTimeout(timeout);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("load", checkSection);
+      document.removeEventListener("DOMContentLoaded", checkSection);
     };
   }, []);
 
@@ -100,7 +118,6 @@ export default function Navbar() {
       document.body.style.overflow = "unset";
     }
 
-    // Cleanup function to reset body overflow
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -126,24 +143,31 @@ export default function Navbar() {
 
               {/* Nav Links */}
               <div className="flex flex-col md:flex-row -space-y-1.5">
-                <NavLink href="#services">Services</NavLink>
-                <NavLink href="#works">Works</NavLink>
-                <NavLink href="#about">About</NavLink>
-                <NavLink href="#contact">Contact</NavLink>
+                <NavLink href="#services" isActive={currentSection === "services"}>Services</NavLink>
+                <NavLink href="#works" isActive={currentSection === "works"}>Works</NavLink>
+                <NavLink href="#about" isActive={currentSection === "about"}>About</NavLink>
+                <NavLink href="#contact" isActive={currentSection === "contact"}>Contact</NavLink>
               </div>
             </div>
 
-            {/* Mobile/Tablet Menu Button - Show after 10% scroll OR always on mobile/tablet */}
-            {isScrolled && (
-              <button
-                onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-gray-900 bg-[#F1F0ED] w-10 h-10 sm:w-12 sm:h-12 hover:bg-slate-100 focus:outline-none fixed top-4 md:top-7 lg:top-10 right-3.5 md:right-6 lg:right-7 z-[999] transition-all duration-300 shadow-sm"
-                aria-label="Toggle menu"
-              >
-                <HamburgerIcon isOpen={isOpen} />
-              </button>
-            )}
+            {/* Mobile/Tablet Menu Button - Show only when in valid sections */}
+            <AnimatePresence>
+              {showHamburger && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={toggleMenu}
+                  className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-gray-900 bg-[#F1F0ED] w-10 h-10 sm:w-12 sm:h-12 hover:bg-slate-100 focus:outline-none fixed top-4 md:top-7 lg:top-10 right-3.5 md:right-6 lg:right-7 z-[999] transition-all duration-300 shadow-sm"
+                  aria-label="Toggle menu"
+                >
+                  <HamburgerIcon isOpen={isOpen} />
+                </motion.button>
+              )}
+            </AnimatePresence>
           </div>
+          
           {/* Hero Background Text - Animated Characters */}
           <div className="w-fit">
             <div className="flex flex-wrap -space-y-[57px] text-[#302f2d] md:opacity-0 absolute top-[55px]">
@@ -313,11 +337,15 @@ export default function Navbar() {
   );
 }
 
-// Desktop NavLink Component
-const NavLink = ({ href, children }) => (
+// Desktop NavLink Component with active state
+const NavLink = ({ href, children, isActive }) => (
   <Link
     href={href}
-    className="px-1 text-[#6B645C] hover:text-[#4a443e] transition-colors"
+    className={`px-1 transition-colors ${
+      isActive 
+        ? "text-[#4a443e] font-semibold" 
+        : "text-[#6B645C] hover:text-[#4a443e]"
+    }`}
   >
     <motion.span
       whileHover={{ scale: 1.05 }}
