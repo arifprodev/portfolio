@@ -164,6 +164,7 @@ export default function RootLayout({
               debug={process.env.NEXT_NODE_ENV === 'development'}
             />
             <SpeedInsights />
+
           </Providers>
         </LoadingWrapper>
       </body>
