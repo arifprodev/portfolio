@@ -50,7 +50,7 @@ const Services = () => {
           <div className="container mx-auto px-4 pt-8 lg:pt-12">
             <div className="flex flex-col gap-16 bg-gray-800">
               {/* Service 1 */}
-              <div className="sticky border-t border-gray-600 bg-gray-800 mb-[135px] top-[20px] md:mb-[222px] md:top-[30px] lg:mb-[200px] lg:top-[25px] xl:mb-[200px] xl:top-[50px] left-0 right-0">
+              <div className="sticky border-t border-gray-600 bg-gray-800 mb-[135px] top-[20px] md:mb-[168px] md:top-[30px] lg:mb-[152px] lg:top-[25px] xl:mb-[152px] xl:top-[50px] left-0 right-0">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -117,7 +117,7 @@ const Services = () => {
               </div>
 
               {/* Service 2 */}
-              <div className="sticky border-t border-gray-600 bg-gray-800 mb-[90px] top-[110px] md:mb-[185px] md:top-[112px] lg:mb-[150px] lg:top-[120px] xl:mb-[170px] xl:top-[149px] left-0 right-0">
+              <div className="sticky border-t border-gray-600 bg-gray-800 mb-[90px] top-[110px] md:mb-[130px] md:top-[113px] lg:mb-[102px] lg:top-[120px] xl:mb-[122px] xl:top-[149px] left-0 right-0">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -181,7 +181,7 @@ text-3xl md:text-5xl lg:text-6xl font-bold "
               </div>
 
               {/* Service 3 */}
-              <div className="sticky border-t border-gray-600 bg-gray-800 top-[150px] md:top-[120px] lg:top-[200px] xl:top-[170px] left-0 right-0">
+              <div className="sticky border-t border-gray-600 bg-gray-800 left-0 right-0">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}

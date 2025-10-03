@@ -56,7 +56,7 @@ const Footer = () => {
             <h1 className="font-bold uppercase text-[#393632] tracking-tight">
               Local Time
             </h1>{" "}
-            <p className="font-mono font-normal text-sm mt-0.5">{currentTime.toLocaleTimeString()}</p>
+            <p className="font-mono font-normal md:font-medium text-sm mt-0.5">{currentTime.toLocaleTimeString()}</p>
           </div>
         </div>
       </div>
